@@ -60,7 +60,7 @@ function multiple_selects_field_widget_form(&$form, &$form_state, $field, $insta
   $properties = _options_properties($type, $multiple, $required, $has_value);
 
   // Prepare the list of options.
-  $options = _multiple_selects_get_options($field, $instance, $properties);
+  $options = _multiple_selects_get_options($field, $instance, $properties, NULL, NULL);
   
   $widget = $element;
 
@@ -108,9 +108,9 @@ function multiple_selects_field_widget_error($element, $error, $form, &$form_sta
 /**
  * Collects the options for a field.
  */
-function _multiple_selects_get_options($field, $instance, $properties) {
+function _multiple_selects_get_options($field, $instance, $properties, $entity_type, $entity) {
   // Get the list of options.
-  $options = (array) module_invoke($field['module'], 'options_list', $field, $instance);
+  $options = (array) module_invoke($field['module'], 'options_list', $field, $instance, $entity_type, $entity);
 
   // Sanitize the options.
   _options_prepare_options($options, $properties);
