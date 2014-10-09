@@ -68,9 +68,11 @@ function multiple_selects_field_widget_form(&$form, &$form_state, $field, $insta
   $required = $element['#required'];
   $has_value = isset($items[0][$value_key]);
   $properties = _options_properties($type, $multiple, $required, $has_value);
-
+  $entity_type = $element['#entity_type'];
+  $entity = $element['#entity'];
+  
   // Prepare the list of options.
-  $options = _multiple_selects_get_options($field, $instance, $properties, NULL, NULL);
+  $options = _multiple_selects_get_options($field, $instance, $properties, $entity_type, $entity);
 
   // Enforcing the element to have the value of the field instance label.
   $element['#title'] = $instance['label'];
