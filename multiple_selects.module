@@ -71,6 +71,10 @@ function multiple_selects_field_widget_form(&$form, &$form_state, $field, $insta
 
   // Prepare the list of options.
   $options = _multiple_selects_get_options($field, $instance, $properties, NULL, NULL);
+
+  // Enforcing the element to have the value of the field instance label.
+  $element['#title'] = $instance['label'];
+  $element['#title_display'] = 'none';
   
   $widget = $element;
 
